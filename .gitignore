@@ -1,0 +1,13 @@
+*.gitattributes
+*.vcxproj*
+.metadata/*
+.cproject
+.project
+Frota_Aula2/.settings
+Frota_Aula2/boost
+Frota_Aula2/cute
+Frota_Aula2/Debug
+Parque_Aula1/.settings
+Parque_Aula1/boost
+Parque_Aula1/cute
+Parque_Aula1/Debug
