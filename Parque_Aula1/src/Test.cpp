@@ -5,8 +5,9 @@
 #include "Parque.h"
 
 
+
  void test_1a_AbrirParque() {
-	 ParqueEstacionamento p1(4, 6);
+	ParqueEstacionamento p1(4, 6);
 	// Testa se o parque foi aberto com a lotação indicada
 	ASSERT_EQUAL(4, p1.getNumLugares());
 	// Testa se o parque foi aberto com o número máximo de clientes indicado
