@@ -40,7 +40,7 @@ void test_b_CriarFrota() {
 }
 
 void test_d_InfoFrota() {
-	/*Veiculo *v1 =new Automovel("Fiat",5,2016,"gasolina",1200);
+	Veiculo *v1 =new Automovel("Fiat",5,2016,"gasolina",1200);
  	Veiculo *v2= new Camiao("Ford",3,2017,"gasolina",1400,1000);
  	Veiculo *v3=new Bicicleta("XX",4,2018,"TodoTerreno");
  	Frota f;
@@ -48,7 +48,7 @@ void test_d_InfoFrota() {
  	f.adicionaVeiculo(v2);
  	f.adicionaVeiculo(v3);
  	ASSERTM("Este teste nunca falha! VERIFICAR informação escrita no monitor", true);
- 	cout << f;*/
+ 	cout << f;
 }
 
 void test_e_OperadorMenor() {

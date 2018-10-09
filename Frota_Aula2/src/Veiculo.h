@@ -12,7 +12,7 @@ protected:
    int mes, ano;
 public:
    Veiculo(string mc, int m, int a);
-   //virtual ~Veiculo(){};
+   //virtual ~Veiculo(){}; // so para o commmit
    int getAno() const;
    string getMarca() const;
    virtual int info() const;

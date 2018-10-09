@@ -5,7 +5,7 @@ using namespace std;
 
 void Frota::adicionaVeiculo(Veiculo *v1)
 {
-	veiculos.push_back(v1); // Apenas presico de escrever v1
+	veiculos.push_back(v1); // Apenas preciso de escrever v1
 }
 
 int Frota::numVeiculos() const

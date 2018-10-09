@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-
+// So para o commit
 Veiculo::Veiculo(string mc, int m, int a)
 {
 	marca = mc;
