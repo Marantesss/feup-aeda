@@ -5,13 +5,13 @@
 #include "grafo.h"
 
 void test_a_ConstrutorNosArestas() {
-	/*Grafo<string,int> g;
+	Grafo<string,int> g;
 	ASSERT_EQUAL(0, g.numNos());
-	ASSERT_EQUAL(0, g.numArestas());*/
+	ASSERT_EQUAL(0, g.numArestas());
 }
 
 void test_b_InserirNo() {
-	/*Grafo<string,int> f;
+	Grafo<string,int> f;
 	f.inserirNo("A");
 	f.inserirNo("B");
 	f.inserirNo("C");
@@ -29,7 +29,7 @@ void test_b_InserirNo() {
 	}
 	f.inserirNo("D");
 	f.inserirNo("E");
-	ASSERT_EQUAL(5, f.numNos());*/
+	ASSERT_EQUAL(5, f.numNos());
 }
 
 void test_c_InserirAresta() {
