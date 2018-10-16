@@ -3,6 +3,11 @@
 
 #include "veterinario.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iterator>
+#include <algorithm>
 using namespace std;
 
 class Animal {
@@ -15,7 +20,12 @@ public:
 	Animal(string nome, int idade);
 	virtual ~Animal(){};
 	string getNome() const;
-	//completar
+	int getIdade() const;
+	static int getMaisJovem();
+	void setVeterinario(Veterinario *v);
+	Veterinario * getVet();
+	virtual bool eJovem() const = 0;
+	string getInfo();
 };
 
 
@@ -24,7 +34,7 @@ class Cao: public Animal {
 	string raca;
 public:
 	Cao(string nome, int idade, string raca);
-	//completar
+	bool eJovem() const;
 };
 
 
@@ -43,7 +53,7 @@ public:
 class Morcego: public Animal, public Voador {
 public:
 	Morcego(string nome, int idade, int vmax, int amax);
-	//completar
+	bool eJovem() const;
 };
 
 

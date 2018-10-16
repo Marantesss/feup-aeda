@@ -7,7 +7,7 @@
 using namespace std;
 
 void test_a_criarAnimais() {
-	/*Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
+	Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
 	Animal *a2=new Morcego("bobo",2,70,2);  //nome, idade, velocidade_maxima, altura_maxima
 	Animal *a3=new Cao("bobby",3,"rafeiro");
 	Animal *a4=new Cao("fly",7,"dalmata");
@@ -21,12 +21,12 @@ void test_a_criarAnimais() {
 	ASSERT_EQUAL(false, a4->eJovem());
 	ASSERT_EQUAL(true, a2->eJovem());
 	ASSERT_EQUAL(false, a5->eJovem());
-	ASSERT_EQUAL(2, Animal::getMaisJovem());*/
+	ASSERT_EQUAL(2, Animal::getMaisJovem());
 }
 
 
 void test_b_adicionarAnimais() {
-	/*Zoo z1;
+	Zoo z1;
 
 	Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
 	Animal *a2=new Morcego("bobo",2,70,2);  //nome, idade, velocidade_maxima, altura_maxima
@@ -40,11 +40,11 @@ void test_b_adicionarAnimais() {
 	z1.adicionaAnimal(a4);
 	z1.adicionaAnimal(a5);
 
-	ASSERT_EQUAL(5, z1.numAnimais());*/
+	ASSERT_EQUAL(5, z1.numAnimais());
 }
 
 void test_c_imprimirAnimais() {
-	/*Zoo z1;
+	Zoo z1;
 
 	Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
 	ASSERT_EQUAL("kurika, 10, estrela", a1->getInformacao());
@@ -55,11 +55,11 @@ void test_c_imprimirAnimais() {
 	z1.adicionaAnimal(a1);
 	z1.adicionaAnimal(a2);
 
-	cout << z1.getInformacao();*/
+	cout << z1.getInformacao();
 }
 
 void test_d_verificarAnimalJovem() {
-	/*Zoo z1;
+	Zoo z1;
 
 	Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
 	Animal *a2=new Morcego("bobo",2,70,2);  //nome, idade, velocidade_maxima, altura_maxima
@@ -68,7 +68,7 @@ void test_d_verificarAnimalJovem() {
 	z1.adicionaAnimal(a2);
 
 	ASSERT_EQUAL(false, z1.animalJovem("kurika"));
-	ASSERT_EQUAL(true, z1.animalJovem("bobo"));*/
+	ASSERT_EQUAL(true, z1.animalJovem("bobo"));
 }
 
 void test_e_alocarVeterinarios() {

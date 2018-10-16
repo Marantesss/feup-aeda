@@ -12,7 +12,12 @@ class Zoo {
 public:
 	int numAnimais() const;
 	int numVeterinarios() const;
-	//completar
+	void adicionaAnimal(Animal *al);
+	string getInformacao() const;
+	bool animalJovem(string nomeA);
+	void alocaVeterinarios(istream &isV);
+	bool removeVeterinario (string nomeV);
+	bool operator < (Zoo& zoo2) const;
 };
 
 

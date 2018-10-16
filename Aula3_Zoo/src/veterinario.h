@@ -11,7 +11,7 @@ class Veterinario {
 public:
 	Veterinario(string nome, int cod);
 	string getNome() const;
-	//completar
+	long getCod() const;
 };
 
 
