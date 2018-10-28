@@ -9,23 +9,23 @@ int Zoo::numVeterinarios() const {
 	return veterinarios.size();
 }
 
-void Zoo::adicionaAnimal(Animal *al) {
-	animais.push_back(al);
+void Zoo::adicionaAnimal(Animal *a1) {
+	this->animais.push_back(a1);
 }
 
 string Zoo::getInformacao() const {
 	stringstream a;
 	string s;
 	for (Animal *an: animais) {
-		s = an->getInfo();
+		s = an->getInformacao();
 		a << s << endl;
 	}
 	return a.str();
 }
 
 bool Zoo::animalJovem(string nomeA) {
-	for (Animal *an: animais) {
-		if (an->getNome() == nomeA && an->eJovem())
+	for (size_t i = 0 ; i < animais.size(); i++) {
+		if(animais[i]->getNome() == nomeA && animais[i]->eJovem())
 			return true;
 	}
 	return false;
@@ -33,6 +33,7 @@ bool Zoo::animalJovem(string nomeA) {
 
 void Zoo::alocaVeterinarios(istream &isV) {
 	string nome, cod;
+
 	// Aloca os veterinarios no vetor veterinarios
 	while(!isV.eof()) {
 		getline(isV,nome);
@@ -42,49 +43,67 @@ void Zoo::alocaVeterinarios(istream &isV) {
 	}
 
 	// Distribui os veterinários uniformemente pelos animais do zoo.
-	int i = 0;
-	for (Animal * a:animais) {
-		a->setVeterinario(veterinarios[i]);
-		i++;
-		i = i % veterinarios.size();
+	int j = 0;
+	for (size_t i = 0; i < animais.size(); i++) {
+		animais[i]->setVeterinario(veterinarios[j]);
+		j++;
+		j = j % veterinarios.size();
 	}
 }
 
 bool Zoo::removeVeterinario (string nomeV) {
-	Veterinario * temp = NULL;
-	vector <Veterinario *>::const_iterator next;
+	if(!procuraVeterinario(nomeV))
+		return false;
 
-	// Apaga o veterinarios com o nome nomeV do vector veterinarios
-	for (Veterinario *v:veterinarios) {
-		if (v->getNome() == nomeV) {
-			temp = v;
-			next = find(veterinarios.begin(), veterinarios.end(), temp);
-			veterinarios.erase(next);
-			break;
+	unsigned int pos;
+
+	// Apaga o Vet do vetor veterinarios
+	for (size_t i = 0; i < veterinarios.size(); i++) {
+		if (veterinarios[i]->getNome() == nomeV) {
+			veterinarios.erase(veterinarios.begin() + i);
+			pos = i;
 		}
 	}
 
-	if (temp == NULL)
-		return false;
+	// Alocando para o Vet seguinte
+	if (pos == veterinarios.size())
+		pos = 0;
 
-	if (next >= veterinarios.end()) {
-		next = veterinarios.begin();
+	for (size_t i = 0; i < animais.size(); i++) {
+		if (animais[i]->getVet()->getNome() == nomeV)
+			animais[i]->setVeterinario(veterinarios[pos]);
 	}
 
-	for (Animal *a:animais) {
-		if (a->getVet()->getNome() == nomeV)
-			a->setVeterinario((*next));
-	}
 	return true;
+}
+
+bool Zoo::procuraVeterinario (string nomeV) {
+	for (size_t i = 0 ; i < veterinarios.size(); i++) {
+		if(veterinarios[i]->getNome() == nomeV)
+			return true;
+	}
+	return false;
 }
 
 bool Zoo::operator < (Zoo& zoo2) const {
 	int z1 = 0, z2 = 0;
+	for (size_t i = 0; i < animais.size(); i++) {
+			z1 += animais[i]->getIdade();
+	}
+
+	for (size_t i = 0; i < zoo2.animais.size(); i++) {
+			z2 += zoo2.animais[i]->getIdade();
+	}
+
+	/*
 	for (Animal *a:animais) {
 		z1 += a->getIdade();
 	}
+
 	for (Animal *a:zoo2.animais) {
 		z2 += a->getIdade();
-	}
+	*/
+
 	return z1 < z2;
 }
+

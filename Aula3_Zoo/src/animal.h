@@ -25,7 +25,7 @@ public:
 	void setVeterinario(Veterinario *v);
 	Veterinario * getVet();
 	virtual bool eJovem() const = 0;
-	string getInfo();
+	virtual string getInformacao(){return NULL;};
 };
 
 
@@ -35,6 +35,8 @@ class Cao: public Animal {
 public:
 	Cao(string nome, int idade, string raca);
 	bool eJovem() const;
+	string getInformacao();
+	//completar
 };
 
 
@@ -45,6 +47,9 @@ class Voador {
 public:
 	Voador(int vmax, int amax);
 	virtual ~Voador(){};
+	int getVelocidade() const;
+	int getAltura() const;
+	virtual string getInformacao(){return NULL;};
 	//completar
 };
 
@@ -54,6 +59,8 @@ class Morcego: public Animal, public Voador {
 public:
 	Morcego(string nome, int idade, int vmax, int amax);
 	bool eJovem() const;
+	string getInformacao();
+	//completar
 };
 
 

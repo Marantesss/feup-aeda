@@ -1,10 +1,9 @@
 
 #include "veterinario.h"
 
-Veterinario::Veterinario(string nome, int cod)
-{
+Veterinario::Veterinario(string nome, int cod) {
 	this->nome = nome;
-	codOrdem = cod;
+	this->codOrdem = cod;
 }
 
 string Veterinario::getNome() const {

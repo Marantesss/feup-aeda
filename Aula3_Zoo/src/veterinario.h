@@ -12,6 +12,7 @@ public:
 	Veterinario(string nome, int cod);
 	string getNome() const;
 	long getCod() const;
+	//completar
 };
 
 
