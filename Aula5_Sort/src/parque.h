@@ -16,13 +16,6 @@ public:
 	bool operator < (const InfoCartao &ic1) const;
 };
 
-class ClienteNaoExistente {
-	string nome;
-public:
-	ClienteNaoExistente(string nome);
-	string getNome() const;
-};
-
 class ParqueEstacionamento {
 	unsigned int vagas;
 	const unsigned int lotacao;
@@ -48,5 +41,20 @@ public:
 	vector<string> clientesGamaUso(int n1, int n2);
 };
 
+// ClienteNaoExistente
+class ClienteNaoExistente {
+	string nome;
+public:
+	ClienteNaoExistente(string nm): nome(nm) {};
+	string getNome() const {return nome;}
+};
+
+// PosicaoNaoExistente
+class PosicaoNaoExistente {
+	int pos;
+public:
+	PosicaoNaoExistente(int p): pos(p) {};
+	int getPos() const {return pos;}
+};
 
 #endif /*PARQUE_H_*/

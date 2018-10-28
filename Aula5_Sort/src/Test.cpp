@@ -118,7 +118,7 @@ void test_d_GamasUso() {
 
 
 void test_e_OrdenaNome() {
-/*	ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -141,7 +141,7 @@ void test_e_OrdenaNome() {
 	InfoCartao ic1=p1.getClientes()[2];
 	ASSERT_EQUAL("Pedro Morais", ic1.nome);
 	InfoCartao ic2=p1.getClientes()[0];
-	ASSERT_EQUAL("Joao Santos", ic2.nome);*/
+	ASSERT_EQUAL("Joao Santos", ic2.nome);
 }
 
 void test_f_InfoClientes() {
