@@ -4,7 +4,7 @@ This repository contains the exercises completed in the TP classes of Algoritmos
 
 ## Course Information
 
-All the course's information can be viewed [here](https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=368697).
+All the course's information can be viewed [here](https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=419991).
 
 ## Authors
 
