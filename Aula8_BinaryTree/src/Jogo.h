@@ -8,15 +8,15 @@ using namespace std;
 
 
 class Circulo {
- int pontuacao;
- bool estado;
- int nVisitas;
+	int pontuacao;
+	bool estado;
+	int nVisitas;
 public:
- Circulo(int p=0, bool e=false): pontuacao(p), estado(e), nVisitas(0) {}
- int getPontuacao() const { return pontuacao; }
- bool getEstado() const { return estado; }
- int getNVisitas() const { return nVisitas; }
- friend ostream &operator << (ostream &os, Circulo &c1);
+	Circulo(int p=0, bool e=false): pontuacao(p), estado(e), nVisitas(0) {}
+	int getPontuacao() const { return pontuacao; }
+	bool getEstado() const { return estado; }
+	int getNVisitas() const { return nVisitas; }
+	friend ostream &operator << (ostream &os, Circulo &c1);
 };
 
 
