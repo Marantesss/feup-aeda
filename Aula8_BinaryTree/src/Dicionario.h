@@ -14,6 +14,7 @@ public:
        string getSignificado() const { return significado; }
        void setSignificado(string sig) { significado = sig; }
        bool operator < (const PalavraSignificado &ps1) const;
+       bool operator == (const PalavraSignificado &ps1) const;
 };
 
 class Dicionario
@@ -30,13 +31,18 @@ public:
 
 
 // a alterar
-class PalavraNaoExiste
-{
+class PalavraNaoExiste {
+	string palavraAntes;
+	string significadoAntes;
+	string palavraApos;
+	string significadoApos;
 public:
-	string getPalavraAntes() const { return ""; }
-	string getSignificadoAntes() const { return ""; }
-	string getPalavraApos() const { return ""; }
-	string getSignificadoApos() const { return ""; }
+	PalavraNaoExiste(string pAnt, string sAnt, string pAp, string sAp): palavraAntes(pAnt), significadoAntes(sAnt), palavraApos(pAp), significadoApos(sAp)
+	{}
+	string getPalavraAntes() const { return palavraAntes; }
+	string getSignificadoAntes() const { return significadoAntes; }
+	string getPalavraApos() const { return palavraApos; }
+	string getSignificadoApos() const { return significadoApos; }
 };
 
 

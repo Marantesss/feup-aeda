@@ -8,16 +8,22 @@ using namespace std;
 
 
 //A ALTERAR!!
-struct apostaHash
-{
-	int operator() (const Aposta & ap) const
-	{
-		return 0;
+struct apostaHash {
+	/* função de hash */
+	int operator() (const Aposta & ap) const {
+		return ap.somaNumeros();
 	}
-	
-	bool operator() (const Aposta & ap1, const Aposta & ap2) const
-	{
-		return true;
+	/* função de igualdade */
+	bool operator() (const Aposta & ap1, const Aposta & ap2) const {
+		// 2 apostas sao diferentes se tiverem tamanhos diferentes
+		if (ap1.tamanho() != ap2.tamanho())
+			return false;
+		// comparamos se ap1 tem os mesmos numeros que ap2
+		unsigned numIguais = ap1.calculaCertos(ap2.getNumeros());
+		if (numIguais == ap1.tamanho())
+			return true;
+		else
+			return false;
 	}
 };
 

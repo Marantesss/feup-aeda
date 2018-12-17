@@ -19,6 +19,9 @@ public:
 	bool contem(unsigned num) const;
 	unsigned calculaCertos(const tabHInt & sorteio) const;
 	tabHInt getNumeros() const { return numeros; }
+	/* Auxiliares para o ex 2 */
+	unsigned somaNumeros() const;
+	unsigned tamanho() const;
 };	
 
 

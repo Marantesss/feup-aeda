@@ -16,6 +16,8 @@ public:
 	int getPontuacao() const { return pontuacao; }
 	bool getEstado() const { return estado; }
 	int getNVisitas() const { return nVisitas; }
+	void incVisitas() { nVisitas++; };
+	void mudaEstado() { if(estado) estado = false; else estado = true; };
 	friend ostream &operator << (ostream &os, Circulo &c1);
 };
 
@@ -23,6 +25,7 @@ public:
 
 class Jogo {
 	BinaryTree<Circulo> jogo;
+	BinaryTree<Circulo> iniciaJogo(int pos,int nivel, vector<int> &pontos, vector<bool> &estados);
 public:
 	Jogo(int niv, vector<int> &pontos, vector<bool> &estados);
 	BinaryTree<Circulo> &getJogo();

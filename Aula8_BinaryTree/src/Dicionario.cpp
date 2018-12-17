@@ -20,6 +20,13 @@ bool PalavraSignificado::operator < (const PalavraSignificado &ps1) const
 		return false;
 }
 
+bool PalavraSignificado::operator == (const PalavraSignificado &ps1) const {
+	if (this->palavra == ps1.palavra)
+		return true;
+	else
+		return false;
+}
+
 
 void Dicionario::lerDicionario(ifstream &fich)
 {
@@ -36,20 +43,55 @@ void Dicionario::lerDicionario(ifstream &fich)
 
 string Dicionario::consulta(string palavra) const
 {
-     // a alterar
-	return "";
+	PalavraSignificado palavraParaEncontrar(palavra, "");
+	PalavraSignificado palavraSignificadoEncontrado = this->palavras.find(palavraParaEncontrar);
+	PalavraSignificado palavraNaoEncontrada("", "");
+	BSTItrIn<PalavraSignificado> it(palavras);
+	/* Nao encontrou */
+	if (palavraNaoEncontrada == palavraSignificadoEncontrado) {
+		string palavraAntes="", significadoAntes="";
+		while (!it.isAtEnd() && it.retrieve().getPalavra() < palavra) {
+			palavraAntes = it.retrieve().getPalavra();
+			significadoAntes = it.retrieve().getSignificado();
+			it.advance();
+		}
+		string palavraApos="", significadoApos="";
+		if (!it.isAtEnd()) {
+			palavraApos = it.retrieve().getPalavra();
+			significadoApos = it.retrieve().getSignificado();
+		}
+		throw PalavraNaoExiste(palavraAntes, significadoAntes, palavraApos, significadoApos);
+	}
+	else
+		return palavraSignificadoEncontrado.getSignificado();
 }
 
 
 bool Dicionario::corrige(string palavra, string significado)
 {
-	// a alterer
+	PalavraSignificado palavraSignificadoEncontrado = this->palavras.find(PalavraSignificado(palavra, ""));
+	BSTItrIn<PalavraSignificado> it(palavras);
+	/* Nao encontrou */
+	if (PalavraSignificado("", "") == palavraSignificadoEncontrado) {
+		palavras.insert(PalavraSignificado(palavra, significado));
+		return false;
+	}
+	else {
+		palavras.remove(PalavraSignificado(palavra, "")); /* Remove palavra existente */
+		palavraSignificadoEncontrado.setSignificado(significado); /* Muda o significado */
+		palavras.insert(palavraSignificadoEncontrado); /* Insere a palavra com o novo significado */
 		return true;
+	}
 }
 
 
 void Dicionario::imprime() const
 {
-	// a alterar
-     return;
+	/* palavras => BST<PalavrasSignificado> */
+	BSTItrIn<PalavraSignificado> it(palavras);
+	while (!it.isAtEnd()) {
+		cout << it.retrieve().getPalavra() << endl;
+		cout << it.retrieve().getSignificado() << endl;
+		it.advance();
+	}
 }

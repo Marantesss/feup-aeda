@@ -52,19 +52,32 @@ unsigned Caixa::ultimoId = 1;
 /* a implementar pelos estudantes */
 
 bool Objeto::operator<(const Objeto& o1) const {
-	// TODO
-	return true;
+	if (this->peso < o1.peso)
+		return true;
+	else
+		return false;
 }
 
 bool Caixa::operator<(const Caixa& c1) const {
-	// TODO
-	return true;
+	/* A caixa com menos carga livre está em primeiro lugar na priority_queue */
+	return cargaLivre > c1.cargaLivre;
 }
 
 
 string Caixa::imprimeConteudo() const {
-	// TODO
-	return "";
+	stringstream ss;
+	if( objetos.empty() ) ss << "Caixa " << id << " vazia!" << endl;
+	else {
+		STACK_OBJS buffer = objetos;
+		ss << "C" << id << "[";
+		while( !buffer.empty() ) {
+			Objeto obj = buffer.top();
+			buffer.pop();
+			ss << " " << obj;
+		}
+		ss << " ]";
+	}
+	return ss.str();
 }
 
 
