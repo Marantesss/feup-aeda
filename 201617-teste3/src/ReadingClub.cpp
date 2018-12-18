@@ -90,22 +90,49 @@ void ReadingClub::setBestReaderCandidates(priority_queue<User>& candidates) {
 //
 
 void ReadingClub::generateCatalog() {
-	//TODO:
-	//...
-
+	for (unsigned i = 0; i < this->books.size(); i++) {
+		BookCatalogItem itemNotFound("", "", 0);
+		BookCatalogItem bci(books[i]->getTitle(), books[i]->getAuthor(), books[i]->getYear());
+		BookCatalogItem bciX = catalogItems.find(bci);
+		if(bciX == itemNotFound) {
+			bci.addItems(books[i]);
+			this->catalogItems.insert(bci);
+		}
+		else {
+			this->catalogItems.remove(bciX);
+			bciX.addItems(books[i]);
+			this->catalogItems.insert(bciX);
+		}
+	}
 }
 
 vector<Book*> ReadingClub::getAvailableItems(Book* book) const {
 	vector<Book*> temp;
-	//TODO:
-	//...
-
+	BSTItrIn<BookCatalogItem> it(catalogItems);
+	while(!it.isAtEnd()) {
+		vector<Book*> items = it.retrieve().getItems();
+		if (book->getAuthor() == it.retrieve().getAuthor() && book->getTitle() == it.retrieve().getTitle()) {
+			for (unsigned i = 0; i < items.size(); i++) {
+				if(items[i]->getReader() == NULL) {
+					temp.push_back(items[i]);
+				}
+			}
+		}
+		it.advance();
+	}
 	return temp;
 }
 
 bool ReadingClub::borrowBookFromCatalog(Book* book, User* reader) {
-	//TODO:
-	//...
+	vector<Book*> possibleBooks = getAvailableItems(book);
+
+	for (unsigned i = 0; i < possibleBooks.size(); i++) {
+		if (possibleBooks[i]->getReader() == NULL) {
+			reader->addReading(possibleBooks[i]->getTitle(), possibleBooks[i]->getAuthor());
+			possibleBooks[i]->setReader(reader);
+			return true;
+		}
+	}
 
 	return false;
 }
@@ -116,15 +143,14 @@ bool ReadingClub::borrowBookFromCatalog(Book* book, User* reader) {
 //
 
 void ReadingClub::addUserRecord(User* user) {
-	//TODO:
-	//...
-
+	UserRecord ur(user);
+	userRecords.insert(ur);
 }
 
 void ReadingClub::changeUserEMail(User* user, string newEMail) {
-	//TODO:
-	//...
-
+	userRecords.erase(user);
+	user->setEMail(newEMail);
+	addUserRecord(user);
 }
 
 
@@ -133,15 +159,28 @@ void ReadingClub::changeUserEMail(User* user, string newEMail) {
 //
 
 void ReadingClub::addBestReaderCandidates(const vector<User>& candidates, int min) {
-	//TODO:
-	//...
+	for (unsigned i = 0; i < candidates.size(); i++) {
+		if (candidates[i].numReadings() >= min)
+			readerCandidates.push(candidates[i]);
+	}
 
 }
 
 int ReadingClub::awardReaderChampion(User& champion) {
-	//TODO:
-	//...
+	stack<User> tempStack;
 
+	tempStack.push(readerCandidates.top());
+	readerCandidates.pop();
+
+	if(readerCandidates.top() < tempStack.top())  {
+		champion = tempStack.top();
+		readerCandidates.push(tempStack.top());
+		tempStack.pop();
+		return readerCandidates.size();
+	}
+
+	readerCandidates.push(tempStack.top());
+	tempStack.pop();
 	return 0;
 }
 

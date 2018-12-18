@@ -58,10 +58,7 @@ int User::numReadings() const {
 // TODO:
 //
 bool User::operator<(const User& u1) const {
-	//TODO:
-	//...
-
-	return false;
+	return this->numReadings() < u1.numReadings();
 }
 
 

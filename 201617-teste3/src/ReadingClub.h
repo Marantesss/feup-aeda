@@ -19,20 +19,18 @@ using namespace std;
 
 struct userRecordHash
 {
-	int operator() (const UserRecord& ur) const
-	{
-		//TODO:
-		//...
-
-		return 0;
+	int operator() (const UserRecord& ur) const {
+		// You can write here whatever you want to pass the test :)
+		int charSum = 0;
+		string email = ur.getEMail();
+		for (unsigned i = 0; i < email.size(); i++)
+			charSum += (int)email[i];
+		return charSum;
 	}
 
-	bool operator() (const UserRecord& ur1, const UserRecord& ur2) const
-	{
-		//TODO:
-		//...
-
-		return false;
+	bool operator() (const UserRecord& ur1, const UserRecord& ur2) const {
+		// 2 users are equal if they have the same e-mail
+		return ur1.getEMail() == ur2.getEMail();
 	}
 };
 
